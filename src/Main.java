@@ -14,7 +14,8 @@ public class Main {
                 null,
                 null,
                 null,
-                false);
+                true,
+                new Car.Key(false,false));
 
         Car carTwo = new Car("Audi",
                 "A8",
@@ -26,7 +27,8 @@ public class Main {
                 null,
                 null,
                 null,
-                false);
+                false,
+                new Car.Key(false,false));
 
         Car carThree = new Car("BMW",
                 "Z8",
@@ -38,7 +40,8 @@ public class Main {
                 null,
                 null,
                 null,
-                false);
+                false,
+                new Car.Key(false,false));
 
         Car carFour = new Car("Kia",
                 "Sportage 4-го покаления",
@@ -50,7 +53,7 @@ public class Main {
                 null,
                 null,
                 null,
-                false);
+                false, new Car.Key(false,false));
 
         Car carFive = new Car("Hyundai",
                 "Avante",
@@ -62,7 +65,7 @@ public class Main {
                 null,
                 null,
                 null,
-                false);
+                false, new Car.Key(false,false));
 
         System.out.println(carOne + " \n" + carTwo + "\n" + carThree + "\n" + carFour + "\n" + carFive);
     }
