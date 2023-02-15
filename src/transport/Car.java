@@ -1,12 +1,8 @@
 package transport;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport   {
+
     private float engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private String transmission;
     private final String bodyType;
     private String regNumber;
@@ -47,38 +43,23 @@ public class Car {
                float engineVolume,
                String color,
                int year,
+               int maxSpeed,
                String country,
                String transmission,
                String bodyType,
                String regNumber,
-               String numberOfSeats,
+               int numberOfSeats,
                boolean rubber,
                Key key) {
 
-        if (brand == null || brand.isEmpty()) {
-            brand = "defult";
-        }
-        this.brand = brand;
-//        ///////////////////////////////////
-        if (model == null || model.isEmpty()) {
-            model = "defult";
-        }
-        this.model = model;
+        super(brand, model, year,country,color,maxSpeed);
+
+
 //        /////////////////////
         setEngineVolume(engineVolume);
 //        //////////////////////////////////////
         setColor(color);
 //        ///////////////////////////////////
-        if (year <= 0) {
-            year = 2000;
-        }
-        this.year = year;
-//        //////////////////////////////////
-        if (country == null || country.isEmpty()) {
-            country = "defult";
-        }
-        this.country = country;
-//        //////////////////////////////////////
         setTransmission(transmission);
 //        //////////////////////////////////
         if (bodyType == null || bodyType.isEmpty()) {
@@ -88,8 +69,8 @@ public class Car {
 //        ///////////////////////////////////////////////
         setRegNumber(regNumber);
 //        //////////////////////////////////
-        if (numberOfSeats == null) {
-            numberOfSeats = "defult";
+        if (numberOfSeats <= 0) {
+            numberOfSeats = 5;
         }
         this.numberOfSeats = 0;
 //        ///////////////////////////////////
@@ -99,14 +80,6 @@ public class Car {
 
     public void changeRubber() {
 
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
     }
 
     public float getEngineVolume() {
@@ -120,24 +93,6 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        if (color == null || color.isEmpty()) {
-            color = "Белый";
-        }
-        this.color = color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
 
     public String getTransmission() {
         return transmission;
@@ -192,10 +147,8 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Марка: " + brand + "\n" + "Модель: " + model + "\n"
-                + "Год выпуска: " + year + "\n" + "Цвет: " + color + "\n"
-                + "Обьем двигателя: " + engineVolume + "\n" + "Трнасмиссия: " + transmission + "\n"
+        return  super.toString() + " " + "Обьем двигателя: " + engineVolume + "\n" + "Трнасмиссия: " + transmission + "\n"
                 + "Тип кузова: " + bodyType + "\n" + "Регистрационный номер: " + regNumber + "\n"
-                + "Количество мест: " + numberOfSeats + "\n" + (rubber? "летняя" : "зимняя ") + " резина" + "\n" + key;
+                + "Количество мест: " + numberOfSeats + "\n" + (rubber? "летняя" : "зимняя ") + " резина" + "\n" + key + "\n" +"///////////////////////////" + "\n";
     }
 }
