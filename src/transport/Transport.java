@@ -1,19 +1,14 @@
 package transport;
 
-public class Transport {
+public abstract class Transport {
        private final String brand;
        private final String model;
-    private final int year;
-    private final String country;
-    private String color;
-    private int maxSpeed;
+       private  float engineVolume;
+
 
         public Transport(String brand,
                          String model,
-                         int year,
-                         String country,
-                         String color,
-                         int maxSpeed) {
+                         float engineVolume) {
             if (brand == null || brand.isEmpty()) {
                 brand = "defult";
             }
@@ -22,24 +17,8 @@ public class Transport {
                 model = "defult";
             }
             this.model = model;
-            if (year <= 0) {
-                year = 2000;
-            }
-            this.year = year;
-            if (country == null || country.isEmpty()) {
-                country = "defult";
-            }
-            this.country = country;
-            if (color != null && color.isEmpty()) {
-                this.color = color;
-            }
-            setColor(color);
-            setMaxSpeed(maxSpeed);
+            setEngineVolume(engineVolume);
         }
-
-//    public class Car extends Transport {
-//
-//    }
 
         public String getBrand() {
             return brand;
@@ -49,37 +28,29 @@ public class Transport {
             return model;
         }
 
-        public int getYear() {
-            return year;
-        }
+    public float getEngineVolume() {
+        return engineVolume;
+    }
 
-        public String getCountry() {
-            return country;
+    public void setEngineVolume(float engineVolume) {
+        if (engineVolume <= 0) {
+            engineVolume = 1.3f;
         }
+        this.engineVolume = engineVolume;
+    }
 
-        public String getColor() {
-            return color;
-        }
+    public void goCar() {
+        System.out.println("Начать движение");
+    }
 
-        public void setColor(String color) {
-            this.color = color;
-        }
+    public  void  stopCar() {
+        System.out.println("Закончить движение");
+    }
 
-        public int getMaxSpeed() {
-            return maxSpeed;
-        }
-
-        public void setMaxSpeed(int maxSpeed) {
-            if(maxSpeed <= 0 ) {
-                maxSpeed = 150;
-            }
-            this.maxSpeed = maxSpeed;
-        }
     @Override
-    public String toString() {
-        return "Марка: " + brand + "\n" + "Модель: " + model + "\n"
-                + "Год выпуска: " + year + "\n" + "Цвет: " + color + "\n"
-                + "Максимальная скорость: " + maxSpeed + "\n";
+    public  String toString() {
+        return   brand + "\n" + "Модель: " + model + "\n"
+                + "Обьем двигателя: " + engineVolume + "\n";
     }
 }
 
