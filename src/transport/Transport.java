@@ -1,6 +1,6 @@
 package transport;
 
-public abstract class Transport {
+public abstract class Transport implements Competing {
        private final String brand;
        private final String model;
        private  float engineVolume;
@@ -43,7 +43,8 @@ public abstract class Transport {
         System.out.println("Начать движение");
     }
 
-    public  void  stopCar() {
+
+    public void  stopCar() {
         System.out.println("Закончить движение");
     }
 
