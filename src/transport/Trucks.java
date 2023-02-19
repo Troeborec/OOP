@@ -9,6 +9,25 @@ public class Trucks extends Transport<DriverC> {
         super(brand, model, engineVolume, driver);
     }
 
+    float trrucks;
+
+    public Trucks(String brand, String model, float engineVolume, DriverC driver, float trrucks) {
+        super(brand, model, engineVolume, driver);
+        this.trrucks = trrucks;
+    }
+
+    enum Trrucks {
+        N1(0, 3.5),
+        N2(3.5, 12),
+        N3(12, 0),
+
+        ;
+
+        Trrucks(double грузоподемностьОдин, double грузоподьемностьДва) {
+        }
+    }
+
+
     @Override
     public void startMove() {
         System.out.println("Трэк марки " + getModel() + "начал движение");

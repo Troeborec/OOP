@@ -45,4 +45,7 @@ public class Main {
         System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
     }
 
+
+
+
     }

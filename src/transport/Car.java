@@ -1,13 +1,37 @@
 package transport;
 
-public class Car extends Transport<DriverB> {
-
+public class Car extends Transport<DriverB> implements Competing {
+    private TypeOfBody typeOfBody;
+    private String typeOFBody;
 
     public Car(String brand,
                String model,
                float engineVolume,
                DriverB driver) {
         super(brand, model, engineVolume, driver);
+
+    }
+
+    enum TypeOfBody {
+        SEDAN("Седан"),
+        HATHBACK("Хетчбек"),
+        KYPE("Купе"),
+        UNIVERSAL("Универсал"),
+        VNEDOROZNIK("Внедорожник"),
+        KROSSOVER("Кроссовер"),
+        PIKAP("Пикап"),
+        FURGON("Фургон"),
+        MINIVEN("Минивен"),
+        ;
+
+        TypeOfBody(String model) {
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Тип кузова: " + typeOfBody +
+                '}';
     }
 
     @Override
