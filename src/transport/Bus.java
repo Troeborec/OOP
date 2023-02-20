@@ -1,54 +1,57 @@
 package transport;
 
-public class Bus extends Transport<DriverD> {
-    BusCapacity busCapacity;
+public class Bus extends Transport<DriverD> implements Competing {
+   private BusCapacity busCapacity;
     public Bus(String brand,
                String model,
                float engineVolume,
-               DriverD driver) {
-        super(brand, model, engineVolume, driver);
-    }
-
-    enum BusCapacity {
-        small(0, 10),
-        little(10, 25),
-        midle(20, 50),
-        big(50, 80),
-        veryBig(80, 120),
-        ;
-
-        BusCapacity(int massOne, int massTwo) {
-        }
-    }
-
-    private Integer upperBound;
-
-    public Bus(String brand, String model, float engineVolume, DriverD driver, BusCapacity busCapacity, Integer upperBound, Integer lowerBound) {
+               DriverD driver,
+               BusCapacity busCapacity) {
         super(brand, model, engineVolume, driver);
         this.busCapacity = busCapacity;
-        this.upperBound = upperBound;
-        this.lowerBound = lowerBound;
     }
 
-    public Integer getUpperBound() {
-        return upperBound;
-    }
+   public enum BusCapacity {
+       small(0, 10),
+       little(10, 25),
+       midle(20, 50),
+       big(50, 80),
+       veryBig(80, 120);
 
-    public void setUpperBound(Integer upperBound) {
-        this.upperBound = upperBound;
-    }
+       private Integer upperBound;
+       private Integer lowerBound;
 
-    public Integer getLowerBound() {
-        return lowerBound;
-    }
+       BusCapacity(int upperBound, int lowerBound) {
+           this.upperBound = upperBound;
+           this.lowerBound = lowerBound;
+       }
 
-    public void setLowerBound(Integer lowerBound) {
-        this.lowerBound = lowerBound;
-    }
+       public int getUpperBound() {
+           return upperBound;
+       }
 
-    private Integer lowerBound;
+       public void setUpperBound(int upperBound) {
+           this.upperBound = upperBound;
+       }
 
-    @Override
+       public int getLowerBound() {
+           return lowerBound;
+       }
+
+       public void setLowerBound(int lowerBound) {
+           this.lowerBound = lowerBound;
+       }
+
+       @Override
+       public String toString() {
+           return "Автобус" +
+                   "Нижняя граница = " + upperBound +
+                   ", Верхняя граница =" + lowerBound +
+                   '}';
+       }
+   }
+
+       @Override
     public void startMove() {
         System.out.println("Автобус марки " + getBrand() + "начал движение");
     }
@@ -56,6 +59,15 @@ public class Bus extends Transport<DriverD> {
     @Override
     public void finishMove() {
         System.out.println("Автобус марки " + getBrand() + "закончил  движение");
+    }
+
+    @Override
+    public void getType() {
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Тип транспортного средства: " + busCapacity);
     }
 
 
@@ -78,12 +90,5 @@ public class Bus extends Transport<DriverD> {
         int maxBound = 100;
         int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Максимальная скорость у Автобуса: " + maxSpeed);
-    }
-
-    @Override
-    public String toString() {
-        return "Bus{" +
-                "busCapacity=" + busCapacity +
-                '}';
     }
 }

@@ -1,34 +1,56 @@
 package transport;
 
-public class Trucks extends Transport<DriverC> {
-
+public class Trucks extends Transport<DriverC> implements Competing {
+    private Trrucks trrucks;
     public Trucks(String brand,
                   String model,
                   float engineVolume,
-                  DriverC driver) {
-        super(brand, model, engineVolume, driver);
-    }
-
-    float trrucks;
-
-    public Trucks(String brand, String model, float engineVolume, DriverC driver, float trrucks) {
+                  DriverC driver,
+                  Trrucks trucks) {
         super(brand, model, engineVolume, driver);
         this.trrucks = trrucks;
     }
 
-    enum Trrucks {
-        N1(0, 3.5),
-        N2(3.5, 12),
-        N3(12, 0),
+   public enum Trrucks {
+       N1(0, 3.5f),
+       N2(3.5f, 12),
+       N3(12, 0);
 
-        ;
+       private float masOne;
+       private float masTwo;
 
-        Trrucks(double грузоподемностьОдин, double грузоподьемностьДва) {
-        }
+       Trrucks(float masOne, float masTwo) {
+           this.masOne = masOne;
+           this.masTwo = masTwo;
+       }
+
+       public float getMasOne() {
+           return masOne;
+       }
+
+       public void setMasOne(float masOne) {
+           this.masOne = masOne;
+       }
+
+       public float getMasTwo() {
+           return masTwo;
+       }
+
+       public void setMasTwo(float masTwo) {
+           this.masTwo = masTwo;
+       }
+
+       @Override
+       public String toString() {
+           return "Грузоподьемность от " + masOne + " до " + masTwo + ".";
+       }
+   }
+
+    public void printTrrucks() {
+        System.out.println("Грузовик" + getBrand() + "грузоподьемностью от " + Trrucks.N1.masOne + "до" + Trrucks.N1.masTwo);
     }
 
-
-    @Override
+        @Override
     public void startMove() {
         System.out.println("Трэк марки " + getModel() + "начал движение");
     }
@@ -39,8 +61,18 @@ public class Trucks extends Transport<DriverC> {
     }
 
     @Override
+    public void getType() {
+
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Тип транспортного средства: ");
+    }
+
+    @Override
     public void pitStop() {
-        System.out.println("Пит-стоп Грузовика");
+        System.out.println("Пит-стоп Грузовика " + trrucks);
     }
 
     @Override
@@ -58,4 +90,6 @@ public class Trucks extends Transport<DriverC> {
         int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Максимальная скорость у Грузовика: " + maxSpeed);
     }
+
+
 }

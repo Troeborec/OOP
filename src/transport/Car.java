@@ -1,40 +1,50 @@
 package transport;
 
 public class Car extends Transport<DriverB> implements Competing {
-    private TypeOfBody typeOfBody;
-    private String typeOFBody;
 
+   private TypeOfBody typeOfBody;
     public Car(String brand,
                String model,
                float engineVolume,
-               DriverB driver) {
+               DriverB driver,
+               TypeOfBody typeOfBody) {
         super(brand, model, engineVolume, driver);
-
+        this.typeOfBody = typeOfBody;
     }
 
-    enum TypeOfBody {
+    public enum TypeOfBody {
         SEDAN("Седан"),
-        HATHBACK("Хетчбек"),
+        HATCHBACK("Хетчбек"),
         KYPE("Купе"),
         UNIVERSAL("Универсал"),
-        VNEDOROZNIK("Внедорожник"),
-        KROSSOVER("Кроссовер"),
+        KROSSOWER("Кроссовер"),
         PIKAP("Пикап"),
         FURGON("Фургон"),
-        MINIVEN("Минивен"),
-        ;
+        MINIWEN("Минивен");
 
-        TypeOfBody(String model) {
+
+        private String kuzov;
+
+        TypeOfBody(String kuzov) {
+            this.kuzov = kuzov;
+        }
+
+        public String getKuzov() {
+            return kuzov;
+        }
+
+        public void setKuzov(String kuzov) {
+            this.kuzov = kuzov;
+        }
+
+        @Override
+        public String toString() {
+            return "Тип кузова" +
+                    kuzov + "\n";
         }
     }
 
-    @Override
-    public String toString() {
-        return "Тип кузова: " + typeOfBody +
-                '}';
-    }
-
-    @Override
+        @Override
     public void startMove() {
         System.out.println("Автомобиль марки " + getBrand() + "начал движение");
     }
@@ -42,6 +52,16 @@ public class Car extends Transport<DriverB> implements Competing {
     @Override
     public void finishMove() {
         System.out.println("Автомобиль марки " + getBrand() + "закочил движение");
+    }
+
+    @Override
+    public void getType() {
+
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Тип транспортного средства: " + typeOfBody);
     }
 
     @Override
