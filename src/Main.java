@@ -36,7 +36,7 @@ public class Main {
                     "A2",
                     2.0f,
                     driverTWO,
-                    Car.TypeOfBody.UNIVERSAL);
+                    null);
             Car carThree = new Car("BMW",
                     "A3",
                     2.0f,
@@ -46,7 +46,7 @@ public class Main {
                     "A4",
                     2.0f,
                     driverFour,
-                    null);
+                    Car.TypeOfBody.KYPE);
 
             // Водители автобуса
             DriverC driverCOne = new DriverC(
@@ -87,7 +87,7 @@ public class Main {
 //            printInfo(carOne);
 //            printInfo(bus);
 //            printInfo(trucks);
-            carTwo.printType();
+            carOne.printType();
         }
     }
 
