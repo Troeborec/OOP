@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         for (int i = 1; i <= 4; i++) {
 
-            //Водители категории В
+            //Водители машины
             DriverB driverOne = new DriverB(
                     "Водитель машины №1",
                     true,
@@ -48,7 +48,7 @@ public class Main {
                     driverFour,
                     Car.TypeOfBody.KYPE);
 
-            // Водители автобуса
+            // Водители грузовых машин
             DriverC driverCOne = new DriverC(
                     "Водитель грузовика 1 ",
                     false,
@@ -57,7 +57,7 @@ public class Main {
                     "Водитель грузовика 2 ",
                     false,
                     8);
-            DriverC driverCTgree = new DriverC(
+            DriverC driverCThree = new DriverC(
                     "Водитель грузовика 3 ",
                     true,
                     6);
@@ -66,28 +66,71 @@ public class Main {
                     true,
                     5);
 
-            Trucks trucks = new Trucks("Trucks brand №" + i,
-                    "Trucks model №" + i,
+            Trucks trucksOne = new Trucks("Бренд №1",
+                    "Модель № 1",
                     5.0f,
                     driverCOne,
                     Trucks.Trrucks.N1);
+            Trucks trucksTwo = new Trucks("Бренд №2",
+                    "Модель № 2",
+                    5.0f,
+                    driverCTwo,
+                    Trucks.Trrucks.N2);
+            Trucks trucksThree = new Trucks("Бренд №3",
+                    "Модель № 3",
+                    5.0f,
+                    driverCThree,
+                    Trucks.Trrucks.N2);
+            Trucks trucksFour = new Trucks("Бренд №4",
+                    "Модель № 4",
+                    5.0f,
+                    driverCFour,
+                    Trucks.Trrucks.N3);
 
-
-            DriverD driverD = new DriverD(
-                    "Driver cat.D " + i,
+            //Водители автобуса
+            DriverD driverDOne = new DriverD(
+                    "Водитель автобуса №1 ",
                     true,
-                    10 + i);
-            Bus bus = new Bus("Bus brand №" + i,
-                    "Bus model № " + i,
-                    3.0f,
-                    driverD,
-                    Bus.BusCapacity.midle);
+                    10);
+            DriverD driverDTwo = new DriverD(
+                    "Водитель автобуса №2 ",
+                    true,
+                    10);
+            DriverD driverDThree = new DriverD(
+                    "Водитель автобуса №3 ",
+                    true,
+                    10);
+            DriverD driverDFour = new DriverD(
+                    "Водитель автобуса №4 ",
+                    true,
+                    10);
 
+            Bus busOne = new Bus("Бренд № 1",
+                    "Бренд №1 ",
+                    3.0f,
+                    driverDOne,
+                    Bus.BusCapacity.midle);
+            Bus busTwo = new Bus("Бренд № 2",
+                    "Бренд №2 ",
+                    3.0f,
+                    driverDTwo,
+                    Bus.BusCapacity.small);
+            Bus busThree = new Bus("Бренд № 3",
+                    "Бренд №3 ",
+                    3.0f,
+                    driverDThree,
+                    Bus.BusCapacity.big);
+            Bus busFour = new Bus("Бренд №4",
+                    "Бренд №4 ",
+                    3.0f,
+                    driverDFour,
+                    Bus.BusCapacity.veryBig);
 
 //            printInfo(carOne);
 //            printInfo(bus);
 //            printInfo(trucks);
-            carOne.printType();
+           // carOne.printType();
+            busOne.passDiagnostic();
         }
     }
 
