@@ -18,25 +18,25 @@ public class Bus extends Transport<DriverD> implements Competing {
        big(50, 80),
        veryBig(80, 120);
 
-       private Integer upperBound;
-       private Integer lowerBound;
+       private float upperBound;
+       private float lowerBound;
 
-       BusCapacity(int upperBound, int lowerBound) {
+       BusCapacity(float upperBound, float lowerBound) {
            this.upperBound = upperBound;
            this.lowerBound = lowerBound;
        }
 
-       public int getUpperBound() {
-           return upperBound;
+       public float getUpperBound() {
+         return upperBound;
        }
 
        public void setUpperBound(int upperBound) {
            this.upperBound = upperBound;
        }
 
-       public int getLowerBound() {
-           return lowerBound;
-       }
+       public float getLowerBound() {
+        return lowerBound;
+    }
 
        public void setLowerBound(int lowerBound) {
            this.lowerBound = lowerBound;
@@ -50,6 +50,7 @@ public class Bus extends Transport<DriverD> implements Competing {
                    '}';
        }
    }
+
 
        @Override
     public void startMove() {
@@ -67,7 +68,8 @@ public class Bus extends Transport<DriverD> implements Competing {
 
     @Override
     public void printType() {
-        System.out.println("Тип транспортного средства: " + busCapacity);
+        System.out.println("Автобус " + getBrand() + " Грузоподьемность от " + ((BusCapacity.small.lowerBound <= 0 && BusCapacity.veryBig.upperBound <=0)?
+                "Данных по транспортному средству недостаточно " : BusCapacity.small.getUpperBound() + "до " + BusCapacity.veryBig.getUpperBound()));
     }
 
 

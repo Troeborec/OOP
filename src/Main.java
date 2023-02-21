@@ -7,25 +7,69 @@ public class Main {
 
     public static void main(String[] args) {
         for (int i = 1; i <= 4; i++) {
-            DriverB driverB = new DriverB(
-                    "Driver cat.B " + i,
-                    false,
-                    3 + i);
-            Car car = new Car("Car brand №" + i,
-                    "Car model №" + i,
-                    2.0f,
-                    driverB,
-                    Car.TypeOfBody.SEDAN);
 
-
-            DriverC driverC = new DriverC(
-                    "Driver cat.C " + i,
+            //Водители категории В
+            DriverB driverOne = new DriverB(
+                    "Водитель машины №1",
                     true,
-                    5 + i);
+                    3);
+            DriverB driverTWO= new DriverB(
+                    "Водитель машины№2",
+                    false,
+                    5);
+            DriverB driverThree = new DriverB(
+                    "Водитель машины №3",
+                    false,
+                    5);
+            DriverB driverFour = new DriverB(
+                    "Водитель машины №4",
+                    false,
+                    3);
+
+            //Легковая машина
+            Car carOne = new Car("Lada",
+                    "A1",
+                    2.0f,
+                    driverOne,
+                    Car.TypeOfBody.PIKAP);
+            Car carTwo = new Car("Audi",
+                    "A2",
+                    2.0f,
+                    driverTWO,
+                    Car.TypeOfBody.UNIVERSAL);
+            Car carThree = new Car("BMW",
+                    "A3",
+                    2.0f,
+                    driverThree,
+                    Car.TypeOfBody.FURGON);
+            Car carFour = new Car("Ferrari",
+                    "A4",
+                    2.0f,
+                    driverFour,
+                    null);
+
+            // Водители автобуса
+            DriverC driverCOne = new DriverC(
+                    "Водитель грузовика 1 ",
+                    false,
+                    5);
+            DriverC driverCTwo = new DriverC(
+                    "Водитель грузовика 2 ",
+                    false,
+                    8);
+            DriverC driverCTgree = new DriverC(
+                    "Водитель грузовика 3 ",
+                    true,
+                    6);
+            DriverC driverCFour = new DriverC(
+                    "Водитель грузовика 4 ",
+                    true,
+                    5);
+
             Trucks trucks = new Trucks("Trucks brand №" + i,
                     "Trucks model №" + i,
                     5.0f,
-                    driverC,
+                    driverCOne,
                     Trucks.Trrucks.N1);
 
 
@@ -40,13 +84,11 @@ public class Main {
                     Bus.BusCapacity.midle);
 
 
-//            printInfo(car);
+//            printInfo(carOne);
 //            printInfo(bus);
 //            printInfo(trucks);
-            System.out.println("///////////////");
-            System.out.println(car);
-            bus.printType();
             car.printType();
+
         }
     }
 

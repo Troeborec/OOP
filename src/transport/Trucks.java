@@ -67,7 +67,8 @@ public class Trucks extends Transport<DriverC> implements Competing {
 
     @Override
     public void printType() {
-        System.out.println("Тип транспортного средства: ");
+        System.out.println("Грузовик: " + getBrand() + "Грузоподьемность от " + ((Trrucks.N1.getMasOne() <= 0 && Trrucks.N3.getMasTwo() <= 0)?
+                "Данных по транспортному средству недостаточно" : Trrucks.N1.masOne + "до" + Trrucks.N3.getMasTwo()) );
     }
 
     @Override

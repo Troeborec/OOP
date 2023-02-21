@@ -61,8 +61,9 @@ public class Car extends Transport<DriverB> implements Competing {
 
     @Override
     public void printType() {
-        System.out.println("Тип транспортного средства: " + typeOfBody);
-    }
+        System.out.println("Автомобиль: " + getBrand() + "Тип кузова: " + ((TypeOfBody.SEDAN == null)? "Данных по транспортному средству недостаточно " : TypeOfBody.SEDAN));
+        }
+
 
     @Override
     public void pitStop() {
