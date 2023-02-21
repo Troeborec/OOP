@@ -1,105 +1,102 @@
-import transport.Bus;
-import transport.Car;
+import transport.*;
+
+import java.lang.reflect.Type;
 
 public class Main {
 
 
     public static void main(String[] args) {
-        int month = 8;
-        Car carOne = new Car("Lada",
-                "Granta",
-                1.7f,
-                "Желтый",
-                2015,
-                180,
-                "Россия",
-                "АКПП",
-                "Седан",
-                "А000АА",
-                4,
-                true,
-                new Car.Key(false,false));
+        for (int i = 1; i <= 4; i++) {
 
-        Car carTwo = new Car("Audi",
-                "A8",
-                2020,
-                "Черный",
-                2020,
-                250,
-                "Германия",
-                null,
-                null,
-                null,
-                3,
-                false,
-                new Car.Key(false,false));
+            //Водители категории В
+            DriverB driverOne = new DriverB(
+                    "Водитель машины №1",
+                    true,
+                    3);
+            DriverB driverTWO= new DriverB(
+                    "Водитель машины№2",
+                    false,
+                    5);
+            DriverB driverThree = new DriverB(
+                    "Водитель машины №3",
+                    false,
+                    5);
+            DriverB driverFour = new DriverB(
+                    "Водитель машины №4",
+                    false,
+                    3);
 
-        Car carThree = new Car("BMW",
-                "Z8",
-                3.0f,
-                "Черный",
-                2021,
-                260,
-                "Германия",
-                null,
-                null,
-                null,
-                2,
-                false,
-                new Car.Key(false,false));
+            //Легковая машина
+            Car carOne = new Car("Lada",
+                    "A1",
+                    2.0f,
+                    driverOne,
+                    Car.TypeOfBody.PIKAP);
+            Car carTwo = new Car("Audi",
+                    "A2",
+                    2.0f,
+                    driverTWO,
+                    Car.TypeOfBody.UNIVERSAL);
+            Car carThree = new Car("BMW",
+                    "A3",
+                    2.0f,
+                    driverThree,
+                    Car.TypeOfBody.FURGON);
+            Car carFour = new Car("Ferrari",
+                    "A4",
+                    2.0f,
+                    driverFour,
+                    null);
 
-        Car carFour = new Car("Kia",
-                "Sportage 4-го покаления",
-                2.4f,
-                "Красный",
-                2018,
-                180,
-                "Южная Корея",
-                null,
-                null,
-                null,
-                5,
-                false,
-                new Car.Key(false,false));
+            // Водители автобуса
+            DriverC driverCOne = new DriverC(
+                    "Водитель грузовика 1 ",
+                    false,
+                    5);
+            DriverC driverCTwo = new DriverC(
+                    "Водитель грузовика 2 ",
+                    false,
+                    8);
+            DriverC driverCTgree = new DriverC(
+                    "Водитель грузовика 3 ",
+                    true,
+                    6);
+            DriverC driverCFour = new DriverC(
+                    "Водитель грузовика 4 ",
+                    true,
+                    5);
 
-        Car carFive = new Car("Hyundai",
-                "Avante",
-                1.6f,
-                "Оранжевый",
-                2016,
-                -210,
-                "Южная Корея",
-                null,
-                null,
-                null,
-                5 ,
-                false,
-                new Car.Key(false, false));
-
-        Bus busOne = new Bus("Audi",
-                "Z42",
-                2015,
-                "Германия",
-                "Красный",
-                160);
-
-        Bus busTwo = new Bus("Toyota",
-                "Nora",
-                2008,
-                "Германия",
-                "Черный",
-                160);
-
-        Bus busThree = new Bus("Ford",
-                "Mastanga",
-                2003,
-                "Польша",
-                "Зеленый",
-                140);
+            Trucks trucks = new Trucks("Trucks brand №" + i,
+                    "Trucks model №" + i,
+                    5.0f,
+                    driverCOne,
+                    Trucks.Trrucks.N1);
 
 
-        System.out.println(carOne + " \n" + carTwo + "\n" + carThree + "\n" + carFour + "\n" + carFive + busOne + "\n" + busTwo + "\n" + busThree);
+            DriverD driverD = new DriverD(
+                    "Driver cat.D " + i,
+                    true,
+                    10 + i);
+            Bus bus = new Bus("Bus brand №" + i,
+                    "Bus model № " + i,
+                    3.0f,
+                    driverD,
+                    Bus.BusCapacity.midle);
 
 
+//            printInfo(carOne);
+//            printInfo(bus);
+//            printInfo(trucks);
+            carTwo.printType();
+        }
     }
+
+    private static void printInfo(Transport<?> transport) {
+        System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
+    }
+
+
+
+
+
     }

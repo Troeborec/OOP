@@ -1,154 +1,89 @@
 package transport;
 
-public class Car extends Transport   {
+public class Car extends Transport<DriverB> implements Competing {
 
-    private float engineVolume;
-    private String transmission;
-    private final String bodyType;
-    private String regNumber;
-    private final int numberOfSeats;
-    private boolean rubber;
+   private TypeOfBody typeOfBody;
+    public Car(String brand,
+               String model,
+               float engineVolume,
+               DriverB driver,
+               TypeOfBody typeOfBody) {
+        super(brand, model, engineVolume, driver);
+        this.typeOfBody = typeOfBody;
+    }
 
-    private Key key;
+    public enum TypeOfBody {
+        SEDAN("Седан"),
+        HATCHBACK("Хетчбек"),
+        KYPE("Купе"),
+        UNIVERSAL("Универсал"),
+        KROSSOWER("Кроссовер"),
+        PIKAP("Пикап"),
+        FURGON("Фургон"),
+        MINIWEN("Минивен");
 
 
-    public static class Key {
-       private final boolean startEngine;
-        private final boolean ketlessAccess;
+        private String kuzov;
 
-        private Key key;
-
-        public Key(boolean startEngine, boolean ketlessAccess) {
-            this.startEngine = startEngine;
-            this.ketlessAccess = ketlessAccess;
+        TypeOfBody(String kuzov) {
+            this.kuzov = kuzov;
         }
 
-
-        public boolean isStartEngine() {
-            return startEngine;
+        public String getKuzov() {
+            return kuzov;
         }
 
-        public boolean isKetlessAccess() {
-            return ketlessAccess;
+        public void setKuzov(String kuzov) {
+            this.kuzov = kuzov;
         }
 
         @Override
         public String toString() {
-            return (startEngine ? "Удаленный запуск двигателя" : "Без удаленного запуска двигателя" + "\n" + (ketlessAccess ? "Безключевой доступ" : "Ключевой доступ"));
+            return "Тип кузова" +
+                    kuzov + "\n";
         }
     }
 
-    public Car(String brand,
-               String model,
-               float engineVolume,
-               String color,
-               int year,
-               int maxSpeed,
-               String country,
-               String transmission,
-               String bodyType,
-               String regNumber,
-               int numberOfSeats,
-               boolean rubber,
-               Key key) {
-
-        super(brand, model, year,country,color,maxSpeed);
-
-
-//        /////////////////////
-        setEngineVolume(engineVolume);
-//        //////////////////////////////////////
-        setColor(color);
-//        ///////////////////////////////////
-        setTransmission(transmission);
-//        //////////////////////////////////
-        if (bodyType == null || bodyType.isEmpty()) {
-            bodyType = "Кабриолет";
-        }
-        this.bodyType = bodyType;
-//        ///////////////////////////////////////////////
-        setRegNumber(regNumber);
-//        //////////////////////////////////
-        if (numberOfSeats <= 0) {
-            numberOfSeats = 5;
-        }
-        this.numberOfSeats = 0;
-//        ///////////////////////////////////
-        this.rubber = rubber;
-        setKey(key);
-    }
-
-    public void changeRubber() {
-
-    }
-
-    public float getEngineVolume() {
-        return engineVolume;
-    }
-
-    public void setEngineVolume(float engineVolume) {
-        if (engineVolume <= 0) {
-            engineVolume = 1.5f;
-        }
-        this.engineVolume = engineVolume;
-    }
-
-
-    public String getTransmission() {
-        return transmission;
-    }
-
-    public void setTransmission(String transmission) {
-        if (transmission == null || transmission.isEmpty()) {
-            transmission = "МКПП";
-        }
-        this.transmission = transmission;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public String getRegNumber() {
-        return regNumber;
-    }
-
-    public void setRegNumber(String regNumber) {
-        if (regNumber == null || regNumber.isEmpty()) {
-            regNumber = "A000AA";
-        }
-        this.regNumber = regNumber;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-
-    public Key getKey() {
-        return key;
-    }
-
-    public void setKey(Key key) {
-        if (key == null) {
-            key = new Key(false, false);
-        }
-        this.key = key;
-    }
-
-    public void changeRubber(int month) {
-        if (month >= 5 && month <= 10) {
-            rubber = true;
-        }
-        if ((month >= 11 && month <= 12) || (month >= 1 && month <= 3) ) {
-            rubber = false;
-        }
+        @Override
+    public void startMove() {
+        System.out.println("Автомобиль марки " + getBrand() + "начал движение");
     }
 
     @Override
-    public String toString() {
-        return  super.toString() + " " + "Обьем двигателя: " + engineVolume + "\n" + "Трнасмиссия: " + transmission + "\n"
-                + "Тип кузова: " + bodyType + "\n" + "Регистрационный номер: " + regNumber + "\n"
-                + "Количество мест: " + numberOfSeats + "\n" + (rubber? "летняя" : "зимняя ") + " резина" + "\n" + key + "\n" +"///////////////////////////" + "\n";
+    public void finishMove() {
+        System.out.println("Автомобиль марки " + getBrand() + "закочил движение");
+    }
+
+    @Override
+    public void getType() {
+
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Автомобиль: " + getBrand() + " Тип кузова: " + ((typeOfBody.getKuzov() == null || typeOfBody.getKuzov().isEmpty())? "Данных по транспортному средству недостаточно " : typeOfBody.getKuzov()));
+        }
+
+
+    @Override
+    public void pitStop() {
+        System.out.println("Пит-стоп Автомобиля");
+    }
+
+    @Override
+    public void BestTime() {
+        int minBound = 100;
+        int maxBound = 160;
+        int theBestTime = (int) (minBound + (maxBound - minBound) * Math.random());
+        System.out.println("Лучшее время круга у Автомобиля: " + theBestTime);
+    }
+
+    @Override
+    public void maxSpeed() {
+        int minBound = 130;
+        int maxBound = 310;
+        int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
+        System.out.println("Максимальная скорость у Автомобиля: " + maxSpeed);
     }
 }
+
