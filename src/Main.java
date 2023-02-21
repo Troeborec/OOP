@@ -87,7 +87,7 @@ public class Main {
 //            printInfo(carOne);
 //            printInfo(bus);
 //            printInfo(trucks);
-
+            carTwo.printType();
         }
     }
 
