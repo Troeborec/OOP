@@ -5,7 +5,15 @@ import java.lang.reflect.Type;
 public class Main {
 
 
+    private static Bus bus;
+
     public static void main(String[] args) {
+        try {
+            bus.passDiagnostic();
+        } catch (TransportTypeException e){
+            System.out.println(e.getMessage());
+        }
+
         for (int i = 1; i <= 4; i++) {
 
             //Водители машины
@@ -13,7 +21,7 @@ public class Main {
                     "Водитель машины №1",
                     true,
                     3);
-            DriverB driverTWO= new DriverB(
+            DriverB driverTWO = new DriverB(
                     "Водитель машины№2",
                     false,
                     5);
@@ -129,9 +137,10 @@ public class Main {
 //            printInfo(carOne);
 //            printInfo(bus);
 //            printInfo(trucks);
-           // carOne.printType();
-            busOne.passDiagnostic();
+            // carOne.printType();
+            carOne.printType();
         }
+
     }
 
     private static void printInfo(Transport<?> transport) {
