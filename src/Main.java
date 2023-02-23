@@ -135,6 +135,7 @@ public class Main {
 //            printInfo(trucks);
             // carOne.printType();
         carTwo.passDiagnostic();
+        carOne.passDiagnostic();
         busTwo.passDiagnostic();
         }
 
