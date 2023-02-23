@@ -4,17 +4,7 @@ import java.lang.reflect.Type;
 
 public class Main {
 
-
-    private static Bus bus;
-
-    public static void main(String[] args) {
-        try {
-            bus.passDiagnostic();
-        } catch (TransportTypeException e){
-            System.out.println(e.getMessage());
-        }
-
-        for (int i = 1; i <= 4; i++) {
+    public static void main(String[] args) throws TransportTypeException {
 
             //Водители машины
             DriverB driverOne = new DriverB(
@@ -128,27 +118,30 @@ public class Main {
                     3.0f,
                     driverDThree,
                     Bus.BusCapacity.big);
-            Bus busFour = new Bus("Бренд №4",
-                    "Бренд №4 ",
-                    3.0f,
-                    driverDFour,
-                    Bus.BusCapacity.veryBig);
+        Bus busFour = new Bus("Бренд №4",
+                "Бренд №4 ",
+                3.0f,
+                driverDFour,
+                Bus.BusCapacity.veryBig);
 
+
+        try {
+            busOne.passDiagnostic();
+        } catch (TransportTypeException e) {
+            System.out.println(e.getMessage());
+        }
 //            printInfo(carOne);
 //            printInfo(bus);
 //            printInfo(trucks);
             // carOne.printType();
-            carOne.printType();
+        carTwo.passDiagnostic();
+        busTwo.passDiagnostic();
         }
 
-    }
 
     private static void printInfo(Transport<?> transport) {
         System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
     }
 
 
-
-
-
-    }
+}

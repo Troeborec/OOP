@@ -2,6 +2,7 @@ package transport;
 
 public class Bus extends Transport<DriverD> implements Competing {
     private BusCapacity busCapacity;
+    private Bus bus;
 
     public Bus(String brand,
                String model,
@@ -77,7 +78,6 @@ public class Bus extends Transport<DriverD> implements Competing {
     public void passDiagnostic() throws TransportTypeException {
         throw new TransportTypeException("Автобусы не проходят диагностику!");
     }
-    // Диагностика!!!
 
 
     @Override
