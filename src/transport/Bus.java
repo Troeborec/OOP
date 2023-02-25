@@ -1,7 +1,9 @@
 package transport;
 
 public class Bus extends Transport<DriverD> implements Competing {
-   private BusCapacity busCapacity;
+    private BusCapacity busCapacity;
+    private Bus bus;
+
     public Bus(String brand,
                String model,
                float engineVolume,
@@ -11,48 +13,48 @@ public class Bus extends Transport<DriverD> implements Competing {
         this.busCapacity = busCapacity;
     }
 
-   public enum BusCapacity {
-       small(0, 10),
-       little(10, 25),
-       midle(20, 50),
-       big(50, 80),
-       veryBig(80, 120);
+    public enum BusCapacity {
+        small(0, 10),
+        little(10, 25),
+        midle(20, 50),
+        big(50, 80),
+        veryBig(80, 120);
 
-       private float upperBound;
-       private float lowerBound;
+        private float upperBound;
+        private float lowerBound;
 
-       BusCapacity(float upperBound, float lowerBound) {
-           this.upperBound = upperBound;
-           this.lowerBound = lowerBound;
-       }
+        BusCapacity(float upperBound, float lowerBound) {
+            this.upperBound = upperBound;
+            this.lowerBound = lowerBound;
+        }
 
-       public float getUpperBound() {
-         return upperBound;
-       }
+        public float getUpperBound() {
+            return upperBound;
+        }
 
-       public void setUpperBound(int upperBound) {
-           this.upperBound = upperBound;
-       }
+        public void setUpperBound(int upperBound) {
+            this.upperBound = upperBound;
+        }
 
-       public float getLowerBound() {
-        return lowerBound;
+        public float getLowerBound() {
+            return lowerBound;
+        }
+
+        public void setLowerBound(int lowerBound) {
+            this.lowerBound = lowerBound;
+        }
+
+        @Override
+        public String toString() {
+            return "Автобус" +
+                    "Нижняя граница = " + upperBound +
+                    ", Верхняя граница =" + lowerBound +
+                    '}';
+        }
     }
 
-       public void setLowerBound(int lowerBound) {
-           this.lowerBound = lowerBound;
-       }
 
-       @Override
-       public String toString() {
-           return "Автобус" +
-                   "Нижняя граница = " + upperBound +
-                   ", Верхняя граница =" + lowerBound +
-                   '}';
-       }
-   }
-
-
-       @Override
+    @Override
     public void startMove() {
         System.out.println("Автобус марки " + getBrand() + "начал движение");
     }
@@ -68,8 +70,13 @@ public class Bus extends Transport<DriverD> implements Competing {
 
     @Override
     public void printType() {
-        System.out.println("Автобус " + getBrand() + " Грузоподьемность от " + ((BusCapacity.small.lowerBound <= 0 && BusCapacity.veryBig.upperBound <=0)?
+        System.out.println("Автобус " + getBrand() + " Грузоподьемность от " + ((BusCapacity.small.lowerBound <= 0 && BusCapacity.veryBig.upperBound <= 0) ?
                 "Данных по транспортному средству недостаточно " : BusCapacity.small.getUpperBound() + "до " + BusCapacity.veryBig.getUpperBound()));
+    }
+    // Диагностика!!!
+    @Override
+    public void passDiagnostic() throws TransportTypeException {
+        throw new TransportTypeException("Автобусы не проходят диагностику!");
     }
 
 

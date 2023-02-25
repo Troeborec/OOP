@@ -71,6 +71,12 @@ public class Trucks extends Transport<DriverC> implements Competing {
                 "Данных по транспортному средству недостаточно" : Trrucks.N1.masOne + "до" + Trrucks.N3.getMasTwo()) );
     }
 
+    // Диагностика!!
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Грузовой автомобиль " + getBrand() + " может проходить диагностику");
+    }
+
     @Override
     public void pitStop() {
         System.out.println("Пит-стоп Грузовика " + trrucks);

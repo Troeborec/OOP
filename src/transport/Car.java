@@ -64,6 +64,12 @@ public class Car extends Transport<DriverB> implements Competing {
         System.out.println("Автомобиль: " + getBrand() + " Тип кузова: " + ((typeOfBody.getKuzov() == null || typeOfBody.getKuzov().isEmpty())? "Данных по транспортному средству недостаточно " : typeOfBody.getKuzov()));
         }
 
+        //ДИАГНОСТИКА!!!
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Автомобиль " + getBrand() + "может проходить диагностику");
+    }
+
 
     @Override
     public void pitStop() {
