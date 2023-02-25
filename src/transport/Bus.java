@@ -9,7 +9,7 @@ public class Bus extends Transport<DriverD> implements Competing {
                float engineVolume,
                DriverD driver,
                BusCapacity busCapacity) {
-        super(brand, model, engineVolume, driver);
+        super(brand, model, engineVolume, driver,);
         this.busCapacity = busCapacity;
     }
 

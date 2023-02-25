@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport<DriverB> implements Competing {
 
    private TypeOfBody typeOfBody;
@@ -8,9 +10,11 @@ public class Car extends Transport<DriverB> implements Competing {
                float engineVolume,
                DriverB driver,
                TypeOfBody typeOfBody) {
-        super(brand, model, engineVolume, driver);
+        super(brand, model, engineVolume, driver,mechanic);
         this.typeOfBody = typeOfBody;
     }
+
+
 
     public enum TypeOfBody {
         SEDAN("Седан"),
@@ -40,7 +44,7 @@ public class Car extends Transport<DriverB> implements Competing {
         @Override
         public String toString() {
             return "Тип кузова" +
-                    kuzov + "\n";
+                    getKuzov() + "\n" + super.toString();
         }
     }
 
@@ -67,7 +71,7 @@ public class Car extends Transport<DriverB> implements Competing {
         //ДИАГНОСТИКА!!!
     @Override
     public void passDiagnostic() {
-        System.out.println("Автомобиль " + getBrand() + "может проходить диагностику");
+        System.out.println("Автомобиль " + getBrand() + " может проходить диагностику" + "\n" + "Тип кузова: " + typeOfBody.getKuzov() + "\n" + super.toString());
     }
 
 

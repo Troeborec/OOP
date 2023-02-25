@@ -1,11 +1,22 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private float engineVolume;
     private T driver;
+    private List<Mechanic> mechanicList;
 
+    public List<Mechanic> getMechanicList() {
+        return mechanicList;
+    }
+
+    public void setMechanicList(List<Mechanic> mechanicList) {
+        this.mechanicList = mechanicList;
+    }
 
     public enum Type {
         Car,
@@ -17,7 +28,8 @@ public abstract class Transport<T extends Driver> implements Competing {
     public Transport(String brand,
                      String model,
                      float engineVolume,
-                     T driver) {
+                     T driver,
+                     List<Mechanic> mechanicList) {
         if (brand == null || brand.isEmpty()) {
             brand = "defult";
         }
@@ -28,6 +40,7 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.model = model;
         setEngineVolume(engineVolume);
         setDriver(driver);
+        this.mechanicList = mechanicList;
     }
 
     public String getBrand() {
@@ -69,7 +82,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     @Override
     public String toString() {
         return "Марка: " + brand + "\n" + "Модель: " + model + "\n"
-                + "Обьем двигателя: " + engineVolume + "\n" + "Тип кузова : ";
+                + "Обьем двигателя: " + engineVolume + "\n";
     }
 
     public abstract void getType();
@@ -77,6 +90,5 @@ public abstract class Transport<T extends Driver> implements Competing {
     public abstract void printType();
 
     public abstract void passDiagnostic() throws TransportTypeException;
-
 }
 

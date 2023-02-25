@@ -74,7 +74,7 @@ public class Trucks extends Transport<DriverC> implements Competing {
     // Диагностика!!
     @Override
     public void passDiagnostic() {
-        System.out.println("Грузовой автомобиль " + getBrand() + " может проходить диагностику");
+        System.out.println("Грузовой автомобиль " + getBrand() + " может проходить диагностику" + "\n" + "Грузопольемность от  " + Trrucks.N1.masOne + " до" + Trrucks.N1.masTwo + "\n" + super.toString());
     }
 
     @Override
