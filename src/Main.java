@@ -7,6 +7,32 @@ public class Main {
 
     public static void main(String[] args) throws TransportTypeException {
 
+//Механики
+
+        Mechanic mechanicOne = new Mechanic("Vasa", "BMW");
+        Mechanic mechanicTwo = new Mechanic("PETA", "AUDI");
+        Mechanic mechanicThree = new Mechanic("KIRILL", "NASA");
+        Mechanic mechanicFour = new Mechanic("Alexey", "Centr");
+
+        //Создаю список механиков
+        List<Mechanic> mechanics = new ArrayList<>();
+        mechanics.add(mechanicOne);
+        mechanics.add(mechanicTwo);
+        mechanics.add(mechanicThree);
+        mechanics.add(mechanicFour);
+
+        List<Mechanic> mechanicsBus = new ArrayList<>();
+        mechanics.add(mechanicOne);
+        mechanics.add(mechanicTwo);
+        mechanics.add(mechanicThree);
+        mechanics.add(mechanicFour);
+
+
+        List<Mechanic> mechanicsTrucks = new ArrayList<>();
+        mechanics.add(mechanicOne);
+        mechanics.add(mechanicTwo);
+        mechanics.add(mechanicThree);
+        mechanics.add(mechanicFour);
 
 
 
@@ -33,22 +59,26 @@ public class Main {
                 "A1",
                 2.0f,
                 driverOne,
-                Car.TypeOfBody.PIKAP);
+                Car.TypeOfBody.PIKAP,
+                mechanics);
         Car carTwo = new Car("Audi",
                 "A2",
                 2.0f,
                 driverTWO,
-                null);
+                null,
+                mechanics);
         Car carThree = new Car("BMW",
                 "A3",
                 2.0f,
                 driverThree,
-                Car.TypeOfBody.FURGON);
+                Car.TypeOfBody.FURGON,
+                mechanics);
         Car carFour = new Car("Ferrari",
                 "A4",
                 2.0f,
                 driverFour,
-                Car.TypeOfBody.KYPE);
+                Car.TypeOfBody.KYPE,
+                mechanics);
 
         // Водители грузовых машин
         DriverC driverCOne = new DriverC(
@@ -72,22 +102,26 @@ public class Main {
                 "Модель № 1",
                 5.0f,
                 driverCOne,
-                Trucks.Trrucks.N1);
+                Trucks.Trrucks.N1,
+                mechanicsTrucks);
         Trucks trucksTwo = new Trucks("Бренд №2",
                 "Модель № 2",
                 5.0f,
                 driverCTwo,
-                Trucks.Trrucks.N2);
+                Trucks.Trrucks.N2,
+                mechanicsTrucks);
         Trucks trucksThree = new Trucks("Бренд №3",
                 "Модель № 3",
                 5.0f,
                 driverCThree,
-                Trucks.Trrucks.N2);
+                Trucks.Trrucks.N2,
+                mechanicsTrucks);
         Trucks trucksFour = new Trucks("Бренд №4",
                 "Модель № 4",
                 5.0f,
                 driverCFour,
-                Trucks.Trrucks.N3);
+                Trucks.Trrucks.N3,
+                mechanicsTrucks);
 
         //Водители автобуса
         DriverD driverDOne = new DriverD(
@@ -111,30 +145,27 @@ public class Main {
                 "Бренд №1 ",
                 3.0f,
                 driverDOne,
-                Bus.BusCapacity.midle);
+                Bus.BusCapacity.midle,
+                mechanicsBus);
         Bus busTwo = new Bus("Бренд № 2",
                 "Бренд №2 ",
                 3.0f,
                 driverDTwo,
-                Bus.BusCapacity.small);
+                Bus.BusCapacity.small,
+                mechanicsBus);
         Bus busThree = new Bus("Бренд № 3",
                 "Бренд №3 ",
                 3.0f,
                 driverDThree,
-                Bus.BusCapacity.big);
+                Bus.BusCapacity.big,
+                mechanicsBus);
         Bus busFour = new Bus("Бренд №4",
                 "Бренд №4 ",
                 3.0f,
                 driverDFour,
-                Bus.BusCapacity.veryBig);
+                Bus.BusCapacity.veryBig,
+                mechanicsBus);
 
-
-        //Механики
-
-        Mechanic mechanicOne = new Mechanic("Vasa", "BMW");
-        Mechanic mechanicTwo = new Mechanic("PETA", "AUDI");
-        Mechanic mechanicThree = new Mechanic("KIRILL", "NASA");
-        Mechanic mechanicFour = new Mechanic("Alexey", "Centr");
 
 
         try {
@@ -169,13 +200,6 @@ public class Main {
         transportList.add(trucksThree);
         transportList.add(trucksFour);
 
-
-        //Создаю механиков
-        List<Mechanic> mechanics = new ArrayList<>();
-        mechanics.add(mechanicOne);
-        mechanics.add(mechanicTwo);
-        mechanics.add(mechanicThree);
-        mechanics.add(mechanicFour);
 
     }
 

@@ -68,6 +68,25 @@ public class Bus extends Transport<DriverD> implements Competing {
     }
 
     @Override
+    public boolean needDiagnostic() {
+        return false;
+    }
+
+    @Override
+    public void needObjectDotherClass() {
+        System.out.print("Автобусом " + getBrand() + " управляет " + getDriver().getName() + " , обслуживают механики: ");
+        int count = getMechanicList().size();
+        for (int i = 0; i < getMechanicList().size(); i++) {
+            System.out.print(getMechanicList().get(i).getName() + " ");
+            count--;
+            if (count > 0) {
+                System.out.print("и ");
+            }
+        }
+        System.out.println();
+    }
+
+    @Override
     public void getType() {
     }
 

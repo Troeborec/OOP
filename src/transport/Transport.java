@@ -1,6 +1,5 @@
 package transport;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Transport<T extends Driver> implements Competing {
@@ -85,10 +84,17 @@ public abstract class Transport<T extends Driver> implements Competing {
                 + "Обьем двигателя: " + engineVolume + "\n";
     }
 
+    public abstract boolean needDiagnostic();
+
+    public abstract void needObjectDotherClass();
+
+
     public abstract void getType();
 
     public abstract void printType();
 
     public abstract void passDiagnostic() throws TransportTypeException;
 }
+
+
 
