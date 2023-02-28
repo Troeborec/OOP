@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport<DriverB> implements Competing {
 
    private TypeOfBody typeOfBody;
@@ -7,10 +9,13 @@ public class Car extends Transport<DriverB> implements Competing {
                String model,
                float engineVolume,
                DriverB driver,
-               TypeOfBody typeOfBody) {
-        super(brand, model, engineVolume, driver);
+               TypeOfBody typeOfBody,
+               List<Mechanic> mechanic) {
+        super(brand, model, engineVolume, driver,mechanic);
         this.typeOfBody = typeOfBody;
     }
+
+
 
     public enum TypeOfBody {
         SEDAN("Седан"),
@@ -40,7 +45,7 @@ public class Car extends Transport<DriverB> implements Competing {
         @Override
         public String toString() {
             return "Тип кузова" +
-                    kuzov + "\n";
+                    getKuzov() + "\n" + super.toString();
         }
     }
 
@@ -52,6 +57,25 @@ public class Car extends Transport<DriverB> implements Competing {
     @Override
     public void finishMove() {
         System.out.println("Автомобиль марки " + getBrand() + "закочил движение");
+    }
+
+    @Override
+    public boolean needDiagnostic() {
+        return true;
+    }
+
+    @Override
+    public void needObjectDotherClass() {
+        System.out.print("Автомобилем " + getBrand() + " управляет " + getDriver().getName() + " , обслуживают механики: ");
+        int count = getMechanicList().size();
+        for (int i = 0; i < getMechanicList().size(); i++) {
+            System.out.print(getMechanicList().get(i).getName() + " ");
+            count--;
+            if (count > 0) {
+                System.out.print("и ");
+            }
+        }
+        System.out.println();
     }
 
     @Override
@@ -67,7 +91,7 @@ public class Car extends Transport<DriverB> implements Competing {
         //ДИАГНОСТИКА!!!
     @Override
     public void passDiagnostic() {
-        System.out.println("Автомобиль " + getBrand() + "может проходить диагностику");
+        System.out.println("Автомобиль " + getBrand() + " может проходить диагностику" + "\n" + "Тип кузова: " + typeOfBody.getKuzov() + "\n" + super.toString());
     }
 
 
