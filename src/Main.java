@@ -1,12 +1,14 @@
 import transport.*;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws TransportTypeException {
+
+
+
 
         //Водители машины
         DriverB driverOne = new DriverB(
@@ -134,16 +136,13 @@ public class Main {
         Mechanic mechanicThree = new Mechanic("KIRILL", "NASA");
         Mechanic mechanicFour = new Mechanic("Alexey", "Centr");
 
+
         try {
             busOne.passDiagnostic();
         } catch (TransportTypeException e) {
             System.out.println(e.getMessage());
         }
-//            printInfo(carOne);
-//            printInfo(bus);
-//            printInfo(trucks);
-        // carOne.printType();
-//        carTwo.passDiagnostic();
+
         carOne.passDiagnostic();
         System.out.println("/////////////////");
         carThree.passDiagnostic();
@@ -152,6 +151,7 @@ public class Main {
         System.out.println("/////////////////");
         busTwo.printType();
         System.out.println("/////////////////");
+        System.out.println("\n");
 
 
         //Создаю список всех учавствующих автомобилей
@@ -168,14 +168,27 @@ public class Main {
         transportList.add(trucksTwo);
         transportList.add(trucksThree);
         transportList.add(trucksFour);
+
+
+        //Создаю механиков
+        List<Mechanic> mechanics = new ArrayList<>();
+        mechanics.add(mechanicOne);
+        mechanics.add(mechanicTwo);
+        mechanics.add(mechanicThree);
+        mechanics.add(mechanicFour);
+
     }
+
 
     public static void howNameDriver() {
         System.out.println("Имя ");
     }
+
     private static void printInfo(Transport<?> transport) {
         System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
     }
 }
+
+
 
 

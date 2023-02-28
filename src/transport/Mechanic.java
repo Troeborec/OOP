@@ -33,4 +33,10 @@ public  class Mechanic{
     public void fixCar() {
         System.out.println("Механик" + getName() + " работающий в компании: " + getNameOfCompany() + " починил машину ");
     }
+
+    @Override
+    public String toString() {
+        return "Механик"+ name + '\n' +
+                "компания" + nameOfCompany + '\n';
+    }
 }

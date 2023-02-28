@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Bus extends Transport<DriverD> implements Competing {
     private BusCapacity busCapacity;
     private Bus bus;
@@ -8,8 +10,9 @@ public class Bus extends Transport<DriverD> implements Competing {
                String model,
                float engineVolume,
                DriverD driver,
-               BusCapacity busCapacity) {
-        super(brand, model, engineVolume, driver,);
+               BusCapacity busCapacity,
+               List<Mechanic> mechanicList) {
+        super(brand, model, engineVolume, driver,mechanicList);
         this.busCapacity = busCapacity;
     }
 

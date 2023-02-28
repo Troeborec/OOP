@@ -1,13 +1,16 @@
 package transport;
 
+import java.util.List;
+
 public class Trucks extends Transport<DriverC> implements Competing {
     private Trrucks trrucks;
     public Trucks(String brand,
                   String model,
                   float engineVolume,
                   DriverC driver,
-                  Trrucks trucks) {
-        super(brand, model, engineVolume, driver);
+                  Trrucks trucks,
+                  List<Mechanic> mechanicList) {
+        super(brand, model, engineVolume, driver,mechanicList);
         this.trrucks = trrucks;
     }
 
