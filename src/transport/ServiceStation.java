@@ -9,14 +9,6 @@ public class ServiceStation {
         this.queue = queue;
     }
 
-    public Queue<Transport> getQueue() {
-        return queue;
-    }
-
-    public void setQueue(Queue<Transport> queue) {
-        this.queue = queue;
-    }
-
     public void getAvtoInQueue() {
     }
 
