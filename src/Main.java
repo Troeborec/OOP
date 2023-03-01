@@ -1,7 +1,9 @@
 import transport.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -167,6 +169,21 @@ public class Main {
                 mechanicsBus);
 
 
+        //HashMap
+        Map<String, String> hashMaps = new HashMap<>();
+        hashMaps.put("carOne", "mechanicOne");
+        hashMaps.put("carTwo", "mechanicTwo");
+        hashMaps.put("carThree", "mechanicThree");
+        hashMaps.put("carFour", "mechanicFour");
+        hashMaps.put("busOne", "mechanicOne");
+        hashMaps.put("busTwo", "mechanicOne");
+        hashMaps.put("busThree", "mechanicTwo");
+        hashMaps.put("busFour", "mechanicThree");
+        hashMaps.put("busFour", "OLOLO");
+        for (Map.Entry<String, String> eze: hashMaps.entrySet()) {
+            System.out.println("Водитель " +  eze.getKey() + " Механик " + eze.getValue());
+        }
+
 
         try {
             busOne.passDiagnostic();
@@ -174,15 +191,6 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        carOne.passDiagnostic();
-        System.out.println("/////////////////");
-        carThree.passDiagnostic();
-        System.out.println("/////////////////");
-        trucksTwo.passDiagnostic();
-        System.out.println("/////////////////");
-        busTwo.printType();
-        System.out.println("/////////////////");
-        System.out.println("\n");
 
 
         //Создаю список всех учавствующих автомобилей
@@ -200,6 +208,19 @@ public class Main {
         transportList.add(trucksThree);
         transportList.add(trucksFour);
 
+
+
+      /*  carOne.passDiagnostic();
+        System.out.println("/////////////////");
+        carThree.passDiagnostic();
+        System.out.println("/////////////////");
+        trucksTwo.passDiagnostic();
+        System.out.println("/////////////////");
+        busTwo.printType();
+        System.out.println("/////////////////");
+        System.out.println("\n");
+
+       */
 
     }
 
