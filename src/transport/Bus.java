@@ -122,4 +122,9 @@ public class Bus extends Transport<DriverD> implements Competing {
         int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Максимальная скорость у Автобуса: " + maxSpeed);
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + busCapacity.hashCode();
+    }
 }

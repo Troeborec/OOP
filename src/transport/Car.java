@@ -115,5 +115,10 @@ public class Car extends Transport<DriverB> implements Competing {
         int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Максимальная скорость у Автомобиля: " + maxSpeed);
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + typeOfBody.hashCode() ;
+    }
 }
 

@@ -11,10 +11,10 @@ public class Main {
 
 //Механики
 
-        Mechanic mechanicOne = new Mechanic("Vasa", "BMW");
-        Mechanic mechanicTwo = new Mechanic("PETA", "AUDI");
-        Mechanic mechanicThree = new Mechanic("KIRILL", "NASA");
-        Mechanic mechanicFour = new Mechanic("Alexey", "Centr");
+        Mechanic mechanicOne = new Mechanic(" Vasa", " BMW");
+        Mechanic mechanicTwo = new Mechanic(" PETA", " AUDI");
+        Mechanic mechanicThree = new Mechanic(" KIRILL", " NASA");
+        Mechanic mechanicFour = new Mechanic(" Alexey", " Centr");
 
         //Создаю список механиков
         List<Mechanic> mechanics = new ArrayList<>();
@@ -35,7 +35,6 @@ public class Main {
         mechanics.add(mechanicTwo);
         mechanics.add(mechanicThree);
         mechanics.add(mechanicFour);
-
 
 
         //Водители машины
@@ -170,18 +169,19 @@ public class Main {
 
 
         //HashMap
-        Map<String, String> hashMaps = new HashMap<>();
-        hashMaps.put("carOne", "mechanicOne");
-        hashMaps.put("carTwo", "mechanicTwo");
-        hashMaps.put("carThree", "mechanicThree");
-        hashMaps.put("carFour", "mechanicFour");
-        hashMaps.put("busOne", "mechanicOne");
-        hashMaps.put("busTwo", "mechanicOne");
-        hashMaps.put("busThree", "mechanicTwo");
-        hashMaps.put("busFour", "mechanicThree");
-        hashMaps.put("busFour", "OLOLO");
-        for (Map.Entry<String, String> eze: hashMaps.entrySet()) {
-            System.out.println("Водитель " +  eze.getKey() + " Механик " + eze.getValue());
+        Map<Transport<?>, List<Mechanic>> hashMaps = new HashMap<>();
+        hashMaps.put(carOne, carOne.getMechanicList());
+        hashMaps.put(carTwo, carTwo.getMechanicList());
+        hashMaps.put(carThree, carThree.getMechanicList());
+        hashMaps.put(carFour, carFour.getMechanicList());
+        hashMaps.put(busOne, busOne.getMechanicList());
+        hashMaps.put(busTwo, busTwo.getMechanicList());
+        hashMaps.put(busThree, busThree.getMechanicList());
+        hashMaps.put(busFour, busFour.getMechanicList());
+        hashMaps.put(busFour, busFour.getMechanicList());
+        for (Map.Entry<Transport<?>, List<Mechanic>> eze : hashMaps.entrySet()) {
+            System.out.printf("%S обслуживает  : ", eze.getKey().getBrand());
+            System.out.println();
         }
 
 
@@ -190,7 +190,6 @@ public class Main {
         } catch (TransportTypeException e) {
             System.out.println(e.getMessage());
         }
-
 
 
         //Создаю список всех учавствующих автомобилей
@@ -208,6 +207,8 @@ public class Main {
         transportList.add(trucksThree);
         transportList.add(trucksFour);
 
+    }
+
 
 
       /*  carOne.passDiagnostic();
@@ -222,17 +223,17 @@ public class Main {
 
        */
 
-    }
 
 
-    public static void howNameDriver() {
-        System.out.println("Имя ");
+        public static void howNameDriver () {
+            System.out.println("Имя ");
+        }
+
+        private static void printInfo (Transport < ? > transport){
+            System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
+        }
     }
 
-    private static void printInfo(Transport<?> transport) {
-        System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
-    }
-}
 
 
 
