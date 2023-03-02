@@ -105,7 +105,10 @@ public abstract class Transport<T extends Driver> implements Competing {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        return false;
+        Transport<?> transport = (Transport<?>) obj;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(transport.model, model) && Objects.equals(transport.brand, brand)
+                && Objects.equals(transport.driver, driver)
+                && Objects.equals(transport.mechanicList, mechanicList);
     }
 }
 

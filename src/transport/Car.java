@@ -118,7 +118,12 @@ public class Car extends Transport<DriverB> implements Competing {
 
     @Override
     public int hashCode() {
-        return super.hashCode() + typeOfBody.hashCode() ;
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
 

@@ -181,7 +181,7 @@ public class Main {
         hashMaps.put(busFour, busFour.getMechanicList());
         for (Map.Entry<Transport<?>, List<Mechanic>> eze : hashMaps.entrySet()) {
             System.out.printf("%S обслуживает  : ", eze.getKey().getBrand());
-            System.out.println();
+
         }
 
 

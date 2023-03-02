@@ -127,4 +127,9 @@ public class Bus extends Transport<DriverD> implements Competing {
     public int hashCode() {
         return super.hashCode() + busCapacity.hashCode();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }
