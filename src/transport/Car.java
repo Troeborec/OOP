@@ -118,7 +118,7 @@ public class Car extends Transport<DriverB> implements Competing {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return super.hashCode() + TypeOfBody.values().hashCode();
     }
 
     @Override

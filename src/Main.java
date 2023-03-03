@@ -1,9 +1,6 @@
 import transport.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
 
@@ -17,13 +14,13 @@ public class Main {
         Mechanic mechanicFour = new Mechanic(" Alexey", " Centr");
 
         //Создаю список механиков
-        List<Mechanic> mechanics = new ArrayList<>();
+        List<Mechanic> mechanics = new LinkedList<>();
         mechanics.add(mechanicOne);
         mechanics.add(mechanicTwo);
         mechanics.add(mechanicThree);
         mechanics.add(mechanicFour);
 
-        List<Mechanic> mechanicsBus = new ArrayList<>();
+        /*  List<Mechanic> mechanicsBus = new ArrayList<>();
         mechanics.add(mechanicOne);
         mechanics.add(mechanicTwo);
         mechanics.add(mechanicThree);
@@ -35,6 +32,8 @@ public class Main {
         mechanics.add(mechanicTwo);
         mechanics.add(mechanicThree);
         mechanics.add(mechanicFour);
+
+         */
 
 
         //Водители машины
@@ -61,25 +60,25 @@ public class Main {
                 2.0f,
                 driverOne,
                 Car.TypeOfBody.PIKAP,
-                mechanics);
+                mechanics.subList(1, 2));
         Car carTwo = new Car("Audi",
                 "A2",
                 2.0f,
                 driverTWO,
                 null,
-                mechanics);
+                mechanics.subList(2, 3));
         Car carThree = new Car("BMW",
                 "A3",
                 2.0f,
                 driverThree,
                 Car.TypeOfBody.FURGON,
-                mechanics);
+                mechanics.subList(1, 4));
         Car carFour = new Car("Ferrari",
                 "A4",
                 2.0f,
                 driverFour,
                 Car.TypeOfBody.KYPE,
-                mechanics);
+                mechanics.subList(2, 2));
 
         // Водители грузовых машин
         DriverC driverCOne = new DriverC(
@@ -104,25 +103,25 @@ public class Main {
                 5.0f,
                 driverCOne,
                 Trucks.Trrucks.N1,
-                mechanicsTrucks);
+                mechanics.subList(1, 2));
         Trucks trucksTwo = new Trucks("Бренд №2",
                 "Модель № 2",
                 5.0f,
                 driverCTwo,
                 Trucks.Trrucks.N2,
-                mechanicsTrucks);
+                mechanics.subList(1, 3));
         Trucks trucksThree = new Trucks("Бренд №3",
                 "Модель № 3",
                 5.0f,
                 driverCThree,
                 Trucks.Trrucks.N2,
-                mechanicsTrucks);
+                mechanics.subList(1, 4));
         Trucks trucksFour = new Trucks("Бренд №4",
                 "Модель № 4",
                 5.0f,
                 driverCFour,
                 Trucks.Trrucks.N3,
-                mechanicsTrucks);
+                mechanics.subList(2, 2));
 
         //Водители автобуса
         DriverD driverDOne = new DriverD(
@@ -147,25 +146,25 @@ public class Main {
                 3.0f,
                 driverDOne,
                 Bus.BusCapacity.midle,
-                mechanicsBus);
+                mechanics.subList(1, 3));
         Bus busTwo = new Bus("Бренд № 2",
                 "Бренд №2 ",
                 3.0f,
                 driverDTwo,
                 Bus.BusCapacity.small,
-                mechanicsBus);
+                mechanics.subList(2, 3));
         Bus busThree = new Bus("Бренд № 3",
                 "Бренд №3 ",
                 3.0f,
                 driverDThree,
                 Bus.BusCapacity.big,
-                mechanicsBus);
+                mechanics.subList(1, 3));
         Bus busFour = new Bus("Бренд №4",
                 "Бренд №4 ",
                 3.0f,
                 driverDFour,
                 Bus.BusCapacity.veryBig,
-                mechanicsBus);
+                mechanics.subList(1, 2));
 
 
         //HashMap
@@ -178,10 +177,15 @@ public class Main {
         hashMaps.put(busTwo, busTwo.getMechanicList());
         hashMaps.put(busThree, busThree.getMechanicList());
         hashMaps.put(busFour, busFour.getMechanicList());
-        hashMaps.put(busFour, busFour.getMechanicList());
-        for (Map.Entry<Transport<?>, List<Mechanic>> eze : hashMaps.entrySet()) {
-            System.out.printf("%S обслуживает  : ", eze.getKey().getBrand());
-
+        for (Map.Entry<Transport<?>, List<Mechanic>> entry : hashMaps.entrySet()) {
+            System.out.printf("%S обслуживает  : ", entry.getKey().getBrand());
+            for (int i = 0; i < entry.getKey().getMechanicList().size(); i++) {
+                System.out.print(entry.getKey().getMechanicList().get(i).getName());
+                if (i < entry.getKey().getMechanicList().size() - 1) {
+                    System.out.print(" и ");
+                }
+            }
+            System.out.println();
         }
 
 

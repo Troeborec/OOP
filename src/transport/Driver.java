@@ -1,13 +1,15 @@
 package transport;
 
+import java.util.Objects;
+
 public abstract class Driver {
     private String name;
-    private boolean DrivingLicense;
+    private boolean drivingLicense;
     private int experience;
 
     public Driver(String name, boolean drivingLicense, int experience) {
         this.name = name;
-        DrivingLicense = drivingLicense;
+        this.drivingLicense = drivingLicense;
         this.experience = experience;
     }
 
@@ -26,11 +28,11 @@ public abstract class Driver {
     }
 
     public boolean isDrivingLicense() {
-        return DrivingLicense;
+        return drivingLicense;
     }
 
     public void setDrivingLicense(boolean drivingLicense) {
-        DrivingLicense = drivingLicense;
+        this.drivingLicense = drivingLicense;
     }
 
     public int getExperience() {
@@ -39,5 +41,11 @@ public abstract class Driver {
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, drivingLicense, experience);
     }
 }

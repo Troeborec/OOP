@@ -97,6 +97,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     public abstract void passDiagnostic() throws TransportTypeException;
 
 
+    @Override
     public int hashCode() {
         return Objects.hash(brand, model, engineVolume, driver, mechanicList);
     }
