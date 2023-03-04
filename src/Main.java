@@ -20,22 +20,18 @@ public class Main {
         mechanics.add(mechanicThree);
         mechanics.add(mechanicFour);
 
-        /*  List<Mechanic> mechanicsBus = new ArrayList<>();
-        mechanics.add(mechanicOne);
-        mechanics.add(mechanicTwo);
-        mechanics.add(mechanicThree);
-        mechanics.add(mechanicFour);
+        // Set
 
+        Set<Object> mechanicHroups = new HashSet<>();
+        mechanicHroups.add(mechanicOne);
+        mechanicHroups.add(mechanicTwo);
+        mechanicHroups.add(mechanicThree);
+        mechanicHroups.add(mechanicFour);
 
-        List<Mechanic> mechanicsTrucks = new ArrayList<>();
-        mechanics.add(mechanicOne);
-        mechanics.add(mechanicTwo);
-        mechanics.add(mechanicThree);
-        mechanics.add(mechanicFour);
-
-         */
-
-
+        Iterator<Object> iterMechanic = mechanicHroups.iterator();
+        while (iterMechanic.hasNext()) {
+            System.out.println(iterMechanic.next());
+        }
         //Водители машины
         DriverB driverOne = new DriverB(
                 "Водитель машины №1",
