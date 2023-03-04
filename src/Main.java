@@ -1,7 +1,6 @@
 import transport.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -9,19 +8,19 @@ public class Main {
 
 //Механики
 
-        Mechanic mechanicOne = new Mechanic("Vasa", "BMW");
-        Mechanic mechanicTwo = new Mechanic("PETA", "AUDI");
-        Mechanic mechanicThree = new Mechanic("KIRILL", "NASA");
-        Mechanic mechanicFour = new Mechanic("Alexey", "Centr");
+        Mechanic mechanicOne = new Mechanic(" Vasa", " BMW");
+        Mechanic mechanicTwo = new Mechanic(" PETA", " AUDI");
+        Mechanic mechanicThree = new Mechanic(" KIRILL", " NASA");
+        Mechanic mechanicFour = new Mechanic(" Alexey", " Centr");
 
         //Создаю список механиков
-        List<Mechanic> mechanics = new ArrayList<>();
+        List<Mechanic> mechanics = new LinkedList<>();
         mechanics.add(mechanicOne);
         mechanics.add(mechanicTwo);
         mechanics.add(mechanicThree);
         mechanics.add(mechanicFour);
 
-        List<Mechanic> mechanicsBus = new ArrayList<>();
+        /*  List<Mechanic> mechanicsBus = new ArrayList<>();
         mechanics.add(mechanicOne);
         mechanics.add(mechanicTwo);
         mechanics.add(mechanicThree);
@@ -34,6 +33,7 @@ public class Main {
         mechanics.add(mechanicThree);
         mechanics.add(mechanicFour);
 
+         */
 
 
         //Водители машины
@@ -60,25 +60,25 @@ public class Main {
                 2.0f,
                 driverOne,
                 Car.TypeOfBody.PIKAP,
-                mechanics);
+                mechanics.subList(1, 2));
         Car carTwo = new Car("Audi",
                 "A2",
                 2.0f,
                 driverTWO,
                 null,
-                mechanics);
+                mechanics.subList(2, 3));
         Car carThree = new Car("BMW",
                 "A3",
                 2.0f,
                 driverThree,
                 Car.TypeOfBody.FURGON,
-                mechanics);
+                mechanics.subList(1, 4));
         Car carFour = new Car("Ferrari",
                 "A4",
                 2.0f,
                 driverFour,
                 Car.TypeOfBody.KYPE,
-                mechanics);
+                mechanics.subList(2, 2));
 
         // Водители грузовых машин
         DriverC driverCOne = new DriverC(
@@ -103,25 +103,25 @@ public class Main {
                 5.0f,
                 driverCOne,
                 Trucks.Trrucks.N1,
-                mechanicsTrucks);
+                mechanics.subList(1, 2));
         Trucks trucksTwo = new Trucks("Бренд №2",
                 "Модель № 2",
                 5.0f,
                 driverCTwo,
                 Trucks.Trrucks.N2,
-                mechanicsTrucks);
+                mechanics.subList(1, 3));
         Trucks trucksThree = new Trucks("Бренд №3",
                 "Модель № 3",
                 5.0f,
                 driverCThree,
                 Trucks.Trrucks.N2,
-                mechanicsTrucks);
+                mechanics.subList(1, 4));
         Trucks trucksFour = new Trucks("Бренд №4",
                 "Модель № 4",
                 5.0f,
                 driverCFour,
                 Trucks.Trrucks.N3,
-                mechanicsTrucks);
+                mechanics.subList(2, 2));
 
         //Водители автобуса
         DriverD driverDOne = new DriverD(
@@ -146,26 +146,47 @@ public class Main {
                 3.0f,
                 driverDOne,
                 Bus.BusCapacity.midle,
-                mechanicsBus);
+                mechanics.subList(1, 3));
         Bus busTwo = new Bus("Бренд № 2",
                 "Бренд №2 ",
                 3.0f,
                 driverDTwo,
                 Bus.BusCapacity.small,
-                mechanicsBus);
+                mechanics.subList(2, 3));
         Bus busThree = new Bus("Бренд № 3",
                 "Бренд №3 ",
                 3.0f,
                 driverDThree,
                 Bus.BusCapacity.big,
-                mechanicsBus);
+                mechanics.subList(1, 3));
         Bus busFour = new Bus("Бренд №4",
                 "Бренд №4 ",
                 3.0f,
                 driverDFour,
                 Bus.BusCapacity.veryBig,
-                mechanicsBus);
+                mechanics.subList(1, 2));
 
+
+        //HashMap
+        Map<Transport<?>, List<Mechanic>> hashMaps = new HashMap<>();
+        hashMaps.put(carOne, carOne.getMechanicList());
+        hashMaps.put(carTwo, carTwo.getMechanicList());
+        hashMaps.put(carThree, carThree.getMechanicList());
+        hashMaps.put(carFour, carFour.getMechanicList());
+        hashMaps.put(busOne, busOne.getMechanicList());
+        hashMaps.put(busTwo, busTwo.getMechanicList());
+        hashMaps.put(busThree, busThree.getMechanicList());
+        hashMaps.put(busFour, busFour.getMechanicList());
+        for (Map.Entry<Transport<?>, List<Mechanic>> entry : hashMaps.entrySet()) {
+            System.out.printf("%S обслуживает  : ", entry.getKey().getBrand());
+            for (int i = 0; i < entry.getKey().getMechanicList().size(); i++) {
+                System.out.print(entry.getKey().getMechanicList().get(i).getName());
+                if (i < entry.getKey().getMechanicList().size() - 1) {
+                    System.out.print(" и ");
+                }
+            }
+            System.out.println();
+        }
 
 
         try {
@@ -173,16 +194,6 @@ public class Main {
         } catch (TransportTypeException e) {
             System.out.println(e.getMessage());
         }
-
-        carOne.passDiagnostic();
-        System.out.println("/////////////////");
-        carThree.passDiagnostic();
-        System.out.println("/////////////////");
-        trucksTwo.passDiagnostic();
-        System.out.println("/////////////////");
-        busTwo.printType();
-        System.out.println("/////////////////");
-        System.out.println("\n");
 
 
         //Создаю список всех учавствующих автомобилей
@@ -200,18 +211,33 @@ public class Main {
         transportList.add(trucksThree);
         transportList.add(trucksFour);
 
-
     }
 
 
-    public static void howNameDriver() {
-        System.out.println("Имя ");
+
+      /*  carOne.passDiagnostic();
+        System.out.println("/////////////////");
+        carThree.passDiagnostic();
+        System.out.println("/////////////////");
+        trucksTwo.passDiagnostic();
+        System.out.println("/////////////////");
+        busTwo.printType();
+        System.out.println("/////////////////");
+        System.out.println("\n");
+
+       */
+
+
+
+        public static void howNameDriver () {
+            System.out.println("Имя ");
+        }
+
+        private static void printInfo (Transport < ? > transport){
+            System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
+        }
     }
 
-    private static void printInfo(Transport<?> transport) {
-        System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет учавствовать в заезде");
-    }
-}
 
 
 

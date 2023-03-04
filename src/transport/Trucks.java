@@ -120,5 +120,13 @@ public class Trucks extends Transport<DriverC> implements Competing {
         System.out.println("Максимальная скорость у Грузовика: " + maxSpeed);
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode() + trrucks.hashCode();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }
